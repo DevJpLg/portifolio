@@ -9,7 +9,12 @@
 
 ## ✨ Sobre
 
-Sou **João Pedro Lopes Gonçalves**, estudante de Engenharia de Computação no Instituto Federal Fluminense e estagiário em Engenharia de Projetos na TechnipFMC. Apaixonado por desenvolvimento de software, dados e automação, busco sempre criar soluções modernas, eficientes e com interfaces incríveis.
+Este é um projeto pessoal de um portfólio moderno e responsivo desenvolvido para apresentar as minhas experiências, habilidades, certificações e projetos de forma interativa, profissional e visualmente atraente.
+
+- **Frontend em React** com TailwindCSS para estilização e Framer Motion para animações.
+- **Internacionalização (i18n)**: suporte a múltiplos idiomas (Português e Inglês).
+- **Deploy Fullstack**: backend Express servindo o frontend em produção.
+- **Acessibilidade** e navegação intuitiva.
 
 ---
 
