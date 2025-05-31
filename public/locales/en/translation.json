@@ -14,7 +14,7 @@
   "hero": {
     "greeting": "Hi There, I'm",
     "name": "<João Pedro/>",
-    "title": "Project Engineering",
+    "title": "Project Engineering Intern",
     "subtitle": "Computer Engineering student at Instituto Federal Fluminense, passionate about software development, data, and automation. Currently interning at TechnipFMC.",
     "contactButtonHero": "Get In Touch",
     "downloadCV": "Download CV"
@@ -43,7 +43,7 @@
     "jobs": [
       {
         "key": "technipfmc_pm",
-        "title": "Project Management Intern",
+        "title": "Project Engineering",
         "company": "TechnipFMC · Internship",
         "dates": "Oct 2024 - Present · ",
         "location": "São João da Barra, Rio de Janeiro, Brazil · Hybrid",
