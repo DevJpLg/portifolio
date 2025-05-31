@@ -1,0 +1,209 @@
+{
+  "siteTitle": "João Pedro Lopes Gonçalves | Portfolio",
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "experience": "Experience",
+    "education": "Education",
+    "skills": "Skills",
+    "projects": "Projects",
+    "certifications": "Certifications",
+    "contact": "Contact",
+    "title": "Navigation"
+  },
+  "hero": {
+    "greeting": "Hi There, I'm",
+    "name": "<João Pedro/>",
+    "title": "Project Engineering Intern",
+    "subtitle": "Computer Engineering student at Instituto Federal Fluminense, passionate about software development, data, and automation. Currently interning at TechnipFMC.",
+    "contactButtonHero": "Get In Touch",
+    "downloadCV": "Download CV"
+  },
+  "about": {
+    "title": "About Me",
+    "intro": "Hello!",
+    "paragraph1": "I'm a Computer Engineering student at Instituto Federal Fluminense in Brazil, driven by a strong interest in the dynamic world of software development and data engineering. My journey began with foundational programming concepts, and since then, I've cultivated a passion for creating efficient and innovative solutions.",
+    "paragraph2": "Currently, I'm gaining valuable hands-on experience as a Project Engineering Intern at TechnipFMC, where I contribute to the project management administration (PMA) sector. My role involves automating complex tasks, managing large data volumes, and optimizing workflows. With advanced English proficiency, I am able to navigate technical documentation and collaborate in professional environments to drive impactful results.",
+    "topSkills": "Frequently Used Tools",
+    "keyTechTags": [
+      { "name": "Python", "bgColor": "bg-green-400", "textColor": "text-green-900" },
+      { "name": "Java", "bgColor": "bg-orange-500", "textColor": "text-white" },
+      { "name": "HTML", "bgColor": "bg-blue-500", "textColor": "text-white" },
+      { "name": "JavaScript", "bgColor": "bg-yellow-300", "textColor": "text-yellow-800" },
+      { "name": "Oracle DB", "bgColor": "bg-red-600", "textColor": "text-white" },
+      { "name": "Office", "bgColor": "bg-orange-600", "textColor": "text-white" }
+    ],
+    "location": "Campos dos Goytacazes, Rio de Janeiro, Brazil",
+    "locationUrl": "https://maps.app.goo.gl/okaKAYu2S3nabjqd7",
+    "connections": "500+ LinkedIn connections",
+    "connectionsUrl": "https://www.linkedin.com/in/joaopedrolopesgoncalves/"
+  },
+  "experience": {
+    "title": "Experience",
+    "jobs": [
+      {
+        "key": "technipfmc_pm",
+        "title": "Project Management Intern",
+        "company": "TechnipFMC · Internship",
+        "dates": "Oct 2024 - Present · ",
+        "location": "São João da Barra, Rio de Janeiro, Brazil · Hybrid",
+        "logo": "/images/technipfmc.svg",
+        "responsibilities": [
+          "Automating complex processes and managing large datasets using tools such as Python, VBA, and Oracle DB.",
+          "Developing solutions and dashboards that support data-driven decision-making and increase workflow efficiency.",
+          "Assisting in project execution, ensuring on-time completion and adherence to high quality standards.",
+          "Leveraging advanced English proficiency to navigate technical documentation and collaborate effectively, driving innovation and operational excellence in projects."
+        ]
+      }
+    ],
+    "monthCount": {
+      "one": "1 month",
+      "other": "{{count}} months"
+    }
+  },
+  "education": {
+    "title": "Education",
+    "items": [
+      {
+        "institution": "IFF - Instituto Federal Fluminense",
+        "degree": "Bachelor's Degree, Computer Engineering",
+        "dates": "Feb 2022 - Feb 2027",
+        "logo": "/images/logos/iff_logo.png"
+      },
+      {
+        "institution": "Colégio Nossa Senhora de Lourdes",
+        "degree": "High School",
+        "dates": "Feb 2019 - Nov 2020",
+        "logo": "/images/logos/sem_logo.png"
+      },
+      {
+        "institution": "Colégio Bom Jesus São José",
+        "degree": "High School",
+        "dates": "Feb 2018 - Nov 2018",
+        "logo": "/images/logos/bomjesus_logo.png"
+      },
+      {
+        "institution": "Colégio Bom Jesus São José",
+        "degree": "Middle School",
+        "dates": "Feb 2014 - Nov 2017",
+        "logo": "/images/logos/bomjesus_logo.png"
+      }
+    ]
+  },
+  "certifications": {
+    "title": "Licenses & Certifications",
+    "showCredentialText": "Show credential",
+    "showMore": "Show More",
+    "showLess": "Show Less",
+    "certificates": [
+      {
+        "key": "excelVbaPowerBi",
+        "name": "Excel Course: Basic to Advanced, Macro and VBA + Power BI",
+        "issuer": "Udemy",
+        "logo": "/images/udemy_logo.svg",
+        "date": "Issued Jan 2025",
+        "credentialId": "UC-467d1001-7a26-4e09-b6fa-ed95a352ce9f",
+        "credentialUrl": "https://www.udemy.com/certificate/UC-467d1001-7a26-4e09-b6fa-ed95a352ce9f/",
+        "skills": ["VBA (Visual Basic for Applications)", "Microsoft Power Apps", "Microsoft Power BI", "Python", "Microsoft Office"]
+      },
+      {
+        "key": "javascript7days",
+        "name": "Learn JAVASCRIPT in 7 days + Real Projects",
+        "issuer": "Udemy",
+        "logo": "/images/udemy_logo.svg",
+        "date": "Issued Aug 2024",
+        "credentialId": "UC-0317e664-1337-4973-8d03-2c40e434db58",
+        "credentialUrl": "https://www.udemy.com/certificate/UC-0317e664-1337-4973-8d03-2c40e434db58/",
+        "skills": ["JavaScript", "HTML", "CSS"]
+      },
+      {
+        "key": "pythonAdvanced",
+        "name": "Python 3 Course: Basic to Advanced - with real projects",
+        "issuer": "Udemy",
+        "logo": "/images/udemy_logo.svg",
+        "date": "Issued Feb 2024",
+        "credentialId": "UC-e7070f0b-126b-4972-a847-34ccf65f9123",
+        "credentialUrl": "https://www.udemy.com/certificate/UC-e7070f0b-126b-4972-a847-34ccf65f9123/",
+        "skills": ["Python"]
+      },
+      {
+        "key": "gitComplete",
+        "name": "Git Complete: From Basic to Advanced",
+        "issuer": "Udemy",
+        "logo": "/images/udemy_logo.svg",
+        "date": "Issued Nov 2023",
+        "credentialId": "UC-c15e43a4-c7e2-407e-b774-4a84db59ef68",
+        "credentialUrl": "https://www.udemy.com/certificate/UC-c15e43a4-c7e2-407e-b774-4a84db59ef68/",
+        "skills": ["Git", "GitHub"]
+      },
+      {
+        "key": "powerBiComplete",
+        "name": "Power BI Complete - From Basic to Advanced",
+        "issuer": "Udemy",
+        "logo": "/images/udemy_logo.svg",
+        "date": "Issued Sep 2023",
+        "credentialId": "UC-3df13012-32c7-4be4-98c8-a6cb8c6c8bca",
+        "credentialUrl": "https://www.udemy.com/certificate/UC-3df13012-32c7-4be4-98c8-a6cb8c6c8bca/",
+        "skills": ["Microsoft Power BI", "Microsoft SQL Server", "Microsoft Excel", "Microsoft Office"]
+      },
+      {
+        "key": "dbAdminBradesco",
+        "name": "Database Administration",
+        "issuer": "Fundação Bradesco",
+        "logo": "/images/fundacao_bradesco_logo.svg",
+        "date": "Issued Aug 2023",
+        "credentialId": "1E0AAB54-03CB-4F6E-979C-D8F286B05AA4",
+        "credentialUrl": "https://drive.google.com/file/d/1TRBdd-lBh3tkvCGS9w20pyn9hbP22iKc/edit",
+        "skills": ["SQL"]
+      },
+      {
+        "key": "dbImplementBradesco",
+        "name": "Implementing Databases",
+        "issuer": "Fundação Bradesco",
+        "logo": "/images/fundacao_bradesco_logo.svg",
+        "date": "Issued Aug 2023",
+        "credentialId": "0FF031EA-C674-4349-B3A0-8A2F7C40D629",
+        "credentialUrl": "https://drive.google.com/file/d/1RngD6VFqzgTwD5NsHbG3izCbsRkZDpCN/edit",
+        "skills": ["SQL"]
+      },
+      {
+        "key": "dataModelingBradesco",
+        "name": "Data Modeling",
+        "issuer": "Fundação Bradesco",
+        "logo": "/images/fundacao_bradesco_logo.svg",
+        "date": "Issued Aug 2023",
+        "credentialId": "B5D4266A-F0D5-4FDA-B6A2-E3A37E084B2",
+        "credentialUrl": "https://drive.google.com/file/d/1Cwk0T0_JwaLUGv0ctNgZo1fTKUVWPaQg/edit",
+        "skills": ["SQL"]
+      }
+    ]
+  },
+  "projects": {
+    "title": "My Projects",
+    "description": "A selection of projects I've worked on. (More details coming soon from GitHub: DevJpLg)",
+    "loading": "Loading projects...",
+    "error": "Failed to load projects. Please try again later",
+    "noProjects": "No public projects to display at the moment.",
+    "noDescription": "No description available.",
+    "viewProject": "View Project",
+    "seeMore": "See More on GitHub"
+  },
+  "contact": {
+    "title": "Get in Touch"
+  },
+  "footer": {
+    "text": "© {{year}} João Pedro Lopes Gonçalves. All rights reserved.",
+    "rights": "All rights reserved.",
+    "ownerName": "João Pedro Lopes Gonçalves"
+  },
+"skills": {
+  "title": "Skills & Tools",
+  "languagesTitle": "Languages",
+  "levelFluent": "Fluent",
+  "levelAdvanced": "Advanced",
+  "levelBasic": "Basic",
+  "namePortuguese": "Portuguese",
+  "nameEnglish": "English",
+  "nameSpanish": "Spanish"
+}
+}
