@@ -9,13 +9,12 @@
 
 ## ✨ Sobre
 
-Este projeto é um portfólio moderno e responsivo desenvolvido para apresentar experiências, habilidades, certificações e projetos de forma interativa e visualmente atraente. O objetivo é proporcionar uma navegação fluida, com animações, transições suaves e suporte multilíngue, destacando o profissionalismo e a criatividade do desenvolvedor.
+Este é um projeto pessoal de um portfólio moderno e responsivo desenvolvido para apresentar as minhas experiências, habilidades, certificações e projetos de forma interativa, profissional e visualmente atraente.
 
 - **Frontend em React** com TailwindCSS para estilização e Framer Motion para animações.
-- **Internacionalização (i18n)**: suporte a múltiplos idiomas (Português 🇧🇷 e Inglês 🇺🇸).
-- **Integração com GitHub**: exibe projetos públicos automaticamente.
-- **Acessibilidade** e navegação intuitiva.
+- **Internacionalização (i18n)**: suporte a múltiplos idiomas (Português e Inglês).
 - **Deploy Fullstack**: backend Express servindo o frontend em produção.
+- **Acessibilidade** e navegação intuitiva.
 
 ---
 
