@@ -82,5 +82,5 @@ npm start
 
 ## 🌐 Acesse Online
 
-- [Portfólio Online](https://www.seusite.com/)
+- [Portfólio Online]([https://www.seusite.com/](https://joaopedro-lg.vercel.app/))
 - [Meu LinkedIn](https://www.linkedin.com/in/joaopedrolopesgoncalves/)
