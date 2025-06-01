@@ -208,7 +208,7 @@ function App() {
     })
   };
 
-  const profilePhotoUrl = "/images/profile.jpg";
+  const profilePhotoUrl = "/images/profile.webp";
   const technipFmcLogoUrl = "/images/technipfmc.svg";
   const linkedinProfileUrl = "https://www.linkedin.com/in/joaopedrolopesgoncalves/";
   const githubProfileUrl = "https://github.com/DevJpLg";
