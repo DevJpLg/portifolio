@@ -58,6 +58,16 @@ function getMonthsSince(startYear, startMonth) {
 
 ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
 
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 640);
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+  return isMobile;
+}
+
 function App() {
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language.split('-')[0]);
@@ -66,11 +76,12 @@ function App() {
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(64);
   const [animationDone, setAnimationDone] = useState(false);
+  const isMobile = useIsMobile();
 
   const sectionInViewProps = {
     initial: "hidden",
     whileInView: "visible",
-    viewport: { once: true, amount: 0.3 }
+    viewport: { once: true, amount: isMobile ? 0.05 : 0.3 }
   };
 
   const changeLanguage = (lng) => {
@@ -133,80 +144,91 @@ function App() {
     setShowAllCertificates(!showAllCertificates);
   };
 
-  const cardVariants = {
-    hidden: { opacity: 0, y: 20, scale: 0.95 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { delay: i * 0.05, duration: 0.3, ease: "easeOut" }
-    }),
-    exit: { opacity: 0, y: -10, scale: 0.95, transition: { duration: 0.2, ease: "easeIn" } }
-  };
+  // Card animation variants
+  const cardVariants = isMobile
+    ? { visible: { opacity: 1, y: 0, scale: 1 } }
+    : {
+        hidden: { opacity: 0, y: 20, scale: 0.95 },
+        visible: (i) => ({
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { delay: i * 0.05, duration: 0.3, ease: "easeOut" }
+        }),
+        exit: { opacity: 0, y: -10, scale: 0.95, transition: { duration: 0.2, ease: "easeIn" } }
+      };
 
   const sectionVariant = {
-    hidden: { opacity: 0, y: 20 },
+    hidden: { opacity: 0, y: isMobile ? 15 : 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.5, when: "beforeChildren", staggerChildren: 0.1 }
+      transition: { duration: isMobile ? 0.6 : 0.5, when: "beforeChildren", staggerChildren: isMobile ? 0.08 : 0.1 }
     }
   };
 
-  const skillItemVariant = {
-    hidden: { opacity: 0, scale: 0.8, y: 10 },
-    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }
-  };
+  const skillItemVariant = isMobile
+    ? { visible: { opacity: 1, scale: 1, y: 0 } }
+    : {
+        hidden: { opacity: 1, scale: 0.8, y: 10 },
+        visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.3, ease: "easeOut" } }
+      };
 
-  const tagVariants = {
-    hidden: { opacity: 0, y: 10, scale: 0.9 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: { delay: i * 0.1, duration: 0.3, ease: "easeOut" },
-    }),
-  };
+  const tagVariants = isMobile
+    ? { visible: { opacity: 1, y: 0, scale: 1 } }
+    : {
+        hidden: { opacity: 0, y: 10, scale: 0.9 },
+        visible: (i) => ({
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: { delay: i * 0.1, duration: 0.3, ease: "easeOut" },
+        }),
+      };
 
-  const experienceCardVariant = {
-    hidden: { opacity: 0, y: 50, scale: 0.98 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        delay: i * 0.15,
-        duration: 0.6,
-        ease: "easeOut"
-      }
-    })
-  };
+  const experienceCardVariant = isMobile
+    ? { visible: { opacity: 1, y: 0, scale: 1 } }
+    : {
+        hidden: { opacity: 0, y: 50, scale: 0.98 },
+        visible: (i) => ({
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: {
+            delay: i * 0.15,
+            duration: 0.6,
+            ease: "easeOut"
+          }
+        })
+      };
 
   const experienceContentVariant = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, y: isMobile ? 8 : 10 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.4,
+        duration: isMobile ? 0.35 : 0.4,
         ease: "easeOut"
       }
     }
   };
 
-  const contactIconVariant = {
-    hidden: { opacity: 0, y: 20, scale: 0.8 },
-    visible: (i) => ({
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        delay: i * 0.15,
-        duration: 0.4,
-        ease: "easeOut"
-      }
-    })
-  };
+  const contactIconVariant = isMobile
+    ? { visible: { opacity: 1, y: 0, scale: 1 } }
+    : {
+        hidden: { opacity: 0, y: 20, scale: 0.8 },
+        visible: (i) => ({
+          opacity: 1,
+          y: 0,
+          scale: 1,
+          transition: {
+            delay: i * 0.15,
+            duration: 0.4,
+            ease: "easeOut"
+          }
+        })
+      };
 
   const profilePhotoUrl = "/images/profile.webp";
   const technipFmcLogoUrl = "/images/technipfmc.svg";
@@ -385,8 +407,8 @@ function App() {
   }, []);
 
   const sectionTitleVariant = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+    hidden: { opacity: 0, y: isMobile ? 15 : 20 },
+    visible: { opacity: 1, y: 0, transition: { duration: isMobile ? 0.7 : 0.6, ease: "easeOut" } }
   };
 
   const cvFileUrl = useMemo(() => {
@@ -490,7 +512,7 @@ function App() {
   };
 
   const githubLangsChartRef = useRef(null);
-  const isGithubLangsChartInView = useInView(githubLangsChartRef, { once: true, amount: 0.3 });
+  const isGithubLangsChartInView = useInView(githubLangsChartRef, { once: true, amount: isMobile ? 0.05 : 0.3 });
 
   return (
     <div className="min-h-screen flex flex-col relative bg-brand-purple-dark text-dark-text">
@@ -647,13 +669,13 @@ function App() {
             <motion.h2
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
               variants={sectionTitleVariant}
               className="text-3xl md:text-4xl font-bold text-center mb-12 flex items-center justify-center"
             >
               <i className="bi bi-person-circle mr-3 text-3xl md:text-4xl text-accent-magenta"></i> {t('about.title')}
             </motion.h2>
-            <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12 animate-fadeInUp">
+            <div className="flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-12">
               <div className="w-56 h-56 md:w-64 md:h-64 lg:w-80 lg:h-80 flex-shrink-0 rounded-full overflow-hidden shadow-2xl border-4 border-accent-blue transform transition-all duration-500 hover:scale-105">
                 <img
                   src={profilePhotoUrl}
@@ -673,7 +695,7 @@ function App() {
                     className="flex flex-wrap justify-center md:justify-start gap-2 md:gap-3"
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
                   >
                     {aboutKeyTechTags.map((tagObj, index) => {
                       const colors = techColorMap[tagObj.name] || { bgColor: "bg-gray-700", textColor: "text-gray-200" };
@@ -722,13 +744,13 @@ function App() {
           variants={sectionVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: true, amount: isMobile ? 0.05 : 0.05 }}
         >
           <div className="container mx-auto px-4 sm:px-6">
             <motion.h2
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
               variants={sectionTitleVariant}
               className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 flex items-center justify-center"
             >
@@ -823,13 +845,13 @@ function App() {
           variants={sectionVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.05 }}
+          viewport={{ once: true, amount: isMobile ? 0.05 : 0.05 }}
         >
           <div className="container mx-auto px-6">
             <motion.h2
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
               variants={sectionTitleVariant}
               className="text-3xl md:text-4xl font-bold text-center mb-12 md:mb-16 flex items-center justify-center"
             >
@@ -843,6 +865,10 @@ function App() {
                   key={skill.name}
                   custom={index}
                   variants={skillItemVariant}
+                  initial={isMobile ? false : "hidden"}
+                  animate={isMobile ? "visible" : undefined}
+                  whileInView={isMobile ? undefined : "visible"}
+                  viewport={isMobile ? undefined : { once: true, amount: 0.05 }}
                   className="bg-brand-purple-light p-4 md:p-6 rounded-xl shadow-xl text-center card-hover-effect flex flex-col items-center justify-center aspect-square transform transition-all duration-300 hover:scale-105"
                 >
                   {skill.logoPath && (
@@ -875,13 +901,13 @@ function App() {
               className="mt-16 md:mt-20 max-w-3xl mx-auto"
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
+              viewport={{ once: true, amount: isMobile ? 0.05 : 0.2 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
               <motion.h3
                 initial="hidden"
                 whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
+                viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
                 variants={sectionTitleVariant}
                 className="text-2xl md:text-3xl font-bold text-center mb-8 md:mb-10 flex items-center justify-center"
               >
@@ -896,7 +922,7 @@ function App() {
                     variants={skillItemVariant}
                     initial="hidden"
                     whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
+                    viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
                     className="bg-brand-purple-light p-5 rounded-xl shadow-lg text-center card-hover-effect flex flex-col items-center justify-center"
                   >
                     {lang.flagSvg && (
@@ -921,7 +947,7 @@ function App() {
             <motion.h2
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
               variants={sectionTitleVariant}
               className={`text-3xl md:text-4xl font-bold text-center mb-12 flex items-center justify-center`}
             >
@@ -1033,9 +1059,10 @@ function App() {
                     key={project.id || index}
                     custom={index}
                     variants={cardVariants}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
+                    initial={isMobile ? false : "hidden"}
+                    animate={isMobile ? "visible" : undefined}
+                    whileInView={isMobile ? undefined : "visible"}
+                    viewport={isMobile ? undefined : { once: true, amount: 0.2 }}
                     className="bg-brand-purple-light p-6 rounded-xl shadow-xl card-hover-glow flex flex-col"
                   >
                     <h3 className="text-xl font-bold mb-2 text-white">{project.name}</h3>
@@ -1106,13 +1133,13 @@ function App() {
           variants={sectionVariant}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.1 }}
+          viewport={{ once: true, amount: isMobile ? 0.05 : 0.1 }}
         >
           <div className="container mx-auto px-6">
             <motion.h2
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
               variants={sectionTitleVariant}
               className="text-3xl md:text-4xl font-bold text-center mb-12 flex items-center justify-center"
             >
@@ -1125,7 +1152,7 @@ function App() {
                   key={edu.institution + index}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   className="p-6 bg-brand-purple-light rounded-xl shadow-lg flex flex-col h-full"
                 >
@@ -1154,7 +1181,7 @@ function App() {
             <motion.h2
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
               variants={sectionTitleVariant}
               className={`text-3xl md:text-4xl font-bold mb-12 flex items-center justify-center`}
             >
@@ -1178,7 +1205,7 @@ function App() {
                   variants={contactIconVariant}
                   initial="hidden"
                   whileInView="visible"
-                  viewport={{ once: true, amount: 0.3 }}
+                  viewport={{ once: true, amount: isMobile ? 0.05 : 0.3 }}
                   whileHover={{ scale: 1.1, y: -5 }}
                   whileTap={{ scale: 0.95 }}
                 >
