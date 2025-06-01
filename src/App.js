@@ -12,6 +12,9 @@ import {
   UserCircleIcon
 } from '@heroicons/react/24/outline';
 import Sidebar from './components/Sidebar';
+import { Bar } from 'react-chartjs-2';
+import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 const style = document.createElement('style');
 style.innerHTML = `
@@ -53,6 +56,8 @@ function getMonthsSince(startYear, startMonth) {
   return Math.max(1, months);
 }
 
+ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend, ChartDataLabels);
+
 function App() {
   const { t, i18n } = useTranslation();
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language.split('-')[0]);
@@ -61,6 +66,13 @@ function App() {
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(64);
   const [animationDone, setAnimationDone] = useState(false);
+
+  // Helper para animação on-scroll
+  const sectionInViewProps = {
+    initial: "hidden",
+    whileInView: "visible",
+    viewport: { once: true, amount: 0.3 }
+  };
 
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
@@ -387,6 +399,103 @@ function App() {
     }
     return "/Joao_Pedro_CV_en.pdf";
   }, [currentLanguage]);
+
+  // Bloqueia o clique com o botão direito do mouse
+  useEffect(() => {
+    const handleContextMenu = (e) => {
+      e.preventDefault();
+    };
+    document.addEventListener('contextmenu', handleContextMenu);
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+    };
+  }, []);
+
+  // Estado para as linguagens do GitHub
+  const [githubLangs, setGithubLangs] = useState({});
+  const [loadingLangs, setLoadingLangs] = useState(true);
+
+  useEffect(() => {
+    async function fetchLanguages() {
+      setLoadingLangs(true);
+      let page = 1;
+      let allRepos = [];
+      try {
+        while (true) {
+          const resp = await fetch(`https://api.github.com/users/DevJpLg/repos?per_page=100&page=${page}`);
+          const repos = await resp.json();
+          if (!Array.isArray(repos) || repos.length === 0) break;
+          allRepos = allRepos.concat(repos);
+          if (repos.length < 100) break;
+          page++;
+        }
+        const langCount = {};
+        allRepos.forEach(repo => {
+          if (repo.language) {
+            langCount[repo.language] = (langCount[repo.language] || 0) + 1;
+          }
+        });
+        setGithubLangs(langCount);
+      } catch {
+        setGithubLangs({});
+      } finally {
+        setLoadingLangs(false);
+      }
+    }
+    fetchLanguages();
+  }, []);
+
+  const githubLangsSorted = Object.entries(githubLangs)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 6);
+
+  const githubLangsChartData = {
+    labels: githubLangsSorted.map(([lang]) => lang),
+    datasets: [
+      {
+        label: t('skills.languagesTitle', "Languages"),
+        data: githubLangsSorted.map(([, count]) => count),
+        backgroundColor: [
+          '#facc15', '#38bdf8', '#22d3ee', '#f472b6', '#a3e635', '#f87171'
+        ],
+        borderRadius: 8,
+      }
+    ]
+  };
+
+  const githubLangsChartOptions = {
+    responsive: true,
+    indexAxis: 'y',
+    plugins: {
+      legend: { display: false },
+      tooltip: { enabled: false },
+      datalabels: {
+        anchor: 'end',
+        align: 'right',
+        color: '#fff',
+        font: { weight: 'bold', size: 14 },
+        formatter: (value) => value,
+        clamp: false,
+        // Adiciona padding extra à direita para garantir espaço para o número
+        padding: {
+          right: 40
+        }
+      }
+    },
+    layout: {
+      padding: {
+        right: 40 // espaço extra à direita do gráfico
+      }
+    },
+    scales: {
+      x: {
+        display: false,
+        // Garante que o gráfico tenha espaço extra à direita para os números
+        max: Math.max(...githubLangsSorted.map(([, count]) => count), 1) + 1
+      },
+      y: { grid: { color: '#444' }, ticks: { color: '#fff' } }
+    }
+  };
 
   return (
     <div className="min-h-screen flex flex-col relative bg-brand-purple-dark text-dark-text">
@@ -717,6 +826,7 @@ function App() {
               <CpuChipIcon className="h-8 w-8 mr-3 text-accent-magenta" />
               {t('skills.title')}
             </motion.h2>
+
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 max-w-5xl mx-auto">
               {skillsList.map((skill, index) => (
                 <motion.div
@@ -885,9 +995,7 @@ function App() {
         <section id="projects" className={`py-16 md:py-24 bg-brand-purple text-dark-text`}>
           <div className="container mx-auto px-6">
             <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3 }}
+              {...sectionInViewProps}
               variants={sectionTitleVariant}
               className="text-3xl md:text-4xl font-bold text-center mb-12 flex items-center justify-center"
             >
@@ -957,9 +1065,26 @@ function App() {
                 {t('projects.seeMore', 'See More on GitHub')} <i className="bi bi-github ml-2"></i>
               </a>
             </div>
+
+            {/* Gráfico de linguagens do GitHub movido para o final da seção */}
+            <motion.div
+              {...sectionInViewProps}
+              variants={sectionVariant}
+              className="w-full max-w-4xl mx-auto mt-16 bg-brand-purple-light rounded-xl p-6 shadow-lg"
+            >
+              <h3 className="text-xl font-bold mb-4 text-center text-accent-blue">
+                {t('projects.mostUsedLanguages', 'Most used Languages - GitHub')}
+              </h3>
+              {loadingLangs ? (
+                <p className="text-center text-gray-300">{t('projects.loading', 'Loading...')}</p>
+              ) : githubLangsSorted.length === 0 ? (
+                <p className="text-center text-gray-400">{t('projects.noProjects', 'No data')}</p>
+              ) : (
+                <Bar data={githubLangsChartData} options={githubLangsChartOptions} height={220} plugins={[ChartDataLabels]} />
+              )}
+            </motion.div>
           </div>
         </section>
-
         <motion.section
           id="education"
           className={`py-16 md:py-24 bg-brand-purple-dark text-dark-text`}

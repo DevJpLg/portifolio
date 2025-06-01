@@ -186,7 +186,8 @@
     "noProjects": "No public projects to display at the moment.",
     "noDescription": "No description available.",
     "viewProject": "View Project",
-    "seeMore": "See More on GitHub"
+    "seeMore": "See More on GitHub",
+    "mostUsedLanguages": "Most Used Languages Per Project - GitHub"
   },
   "contact": {
     "title": "Get in Touch"
