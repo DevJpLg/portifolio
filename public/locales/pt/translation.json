@@ -22,7 +22,7 @@
   "about": {
     "title": "Sobre Mim",
     "intro": "Olá!",
-    "paragraph1": "Sou um estudante de Engenharia de Computação no Instituto Federal Fluminense, motivado por um forte interesse no dinâmico mundo do desenvolvimento de software e engenharia de dados. Minha jornada começou com conceitos fundamentais de programação e, desde então, cultivei uma paixão por criar soluções eficientes e inovadoras.",
+    "paragraph1": "Estudante de Engenharia de Computação no Instituto Federal Fluminense, motivado por um forte interesse no dinâmico mundo do desenvolvimento de software e engenharia de dados. Minha jornada começou com conceitos fundamentais de programação e, desde então, cultivei uma paixão por criar soluções eficientes e inovadoras.",
     "paragraph2": "Atualmente, estou ganhando valiosa experiência prática como Estagiário de Engenharia de Projetos na TechnipFMC, onde contribuo para o setor de administração de gerenciamento de projetos (PMA). Minha função envolve automatizar tarefas complexas, gerenciar grandes volumes de dados e otimizar fluxos de trabalho. Com proficiência avançada em inglês, sou capaz de navegar por documentação técnica e colaborar em ambientes profissionais para impulsionar resultados impactantes.",
     "topSkills": "Ferramentas Mais Usadas",
     "keyTechTags": [
@@ -74,10 +74,11 @@
         "locationUrl": "https://maps.app.goo.gl/vCmHfFs7mXaY6HkDA",
         "logo": "/images/technipfmc.svg",
         "responsibilities": [
-          "Automatizando processos complexos e gerenciando grandes volumes de dados usando ferramentas como Python, VBA e Oracle DB.",
-          "Desenvolvendo soluções e painéis que apoiam a tomada de decisão baseada em dados e aumentam a eficiência do fluxo de trabalho.",
-          "Auxiliando na execução de projetos, garantindo a conclusão no prazo e a adesão a altos padrões de qualidade.",
-          "Utilizando proficiência avançada em inglês para navegar por documentação técnica e colaborar efetivamente, impulsionando a inovação e a excelência operacional em projetos."
+          "Desenvolvo e implemento soluções de automação para processos complexos e para o gerenciamento eficiente de grandes volumes de dados, utilizando Python, VBA e Oracle Database. Essas iniciativas visam reduzir o tempo de execução de tarefas, aumentar a precisão dos dados e contribuir significativamente para a eficiência operacional.",
+          "Crio e mantenho painéis de controle (dashboards) e ferramentas analíticas interativas, principalmente com Microsoft Power BI e Microsoft Power Apps. Essas soluções apoiam diretamente a tomada de decisões estratégicas baseada em dados e o aprimoramento contínuo da eficiência dos fluxos de trabalho.",
+          "Presto suporte ativo na execução de projetos, aplicando princípios de Gestão de Projetos para assegurar o cumprimento de prazos e a manutenção de altos padrões de qualidade. Colaboro na identificação e resolução de desafios técnicos e operacionais, garantindo o progresso eficaz dos projetos.",
+          "Utilizo minha proficiência avançada em inglês para a análise detalhada de documentação técnica e para uma comunicação eficaz com equipes globais e multidisciplinares, facilitando o alinhamento e impulsionando a inovação e a excelência operacional no setor de projetos.",
+          "Contribuo para a organização e o compartilhamento de informações de projetos utilizando plataformas como Microsoft SharePoint e as ferramentas do Microsoft Office, otimizando a colaboração e a eficiência da equipe."
         ]
       }
     ],
