@@ -1,78 +1,78 @@
-# 🚀 João Pedro Lopes Gonçalves | Portfólio
+# 🚀 João Pedro Lopes Gonçalves | Portfolio
 
 <p align="center">
-  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
-  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
-  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
-  <img src="https://img.shields.io/badge/i18n-Internationalization-blueviolet?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB"/>
+  <img src="https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white"/>
+  <img src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/i18n-Internationalization-blueviolet?style=for-the-badge"/>
 </p>
 
-## ✨ Sobre
+## ✨ About
 
-Este é um projeto pessoal de um portfólio moderno e responsivo desenvolvido para apresentar as minhas experiências, habilidades, certificações e projetos de forma interativa, profissional e visualmente atraente.
+This is a personal project: a modern and responsive portfolio developed to showcase my experiences, skills, certifications, and projects in an interactive, professional, and visually appealing way.
 
-- **Frontend em React** com TailwindCSS para estilização e Framer Motion para animações.
-- **Internacionalização (i18n)**: suporte a múltiplos idiomas (Português e Inglês).
-- **Deploy Fullstack**: backend Express servindo o frontend em produção.
-- **Acessibilidade** e navegação intuitiva.
-
----
-
-## 🎨 Destaques do Projeto
-
-- **Interface Moderna:** UI responsiva, dark mode, animações suaves com Framer Motion e transições de hover.
-- **Internacionalização:** Suporte a Português 🇧🇷 e Inglês 🇺🇸.
-- **Seções Dinâmicas:** Sobre, Experiência, Habilidades, Certificações, Projetos (com integração ao GitHub) e Contato.
-- **Acessibilidade:** Navegação por teclado e design inclusivo.
-- **Deploy Fullstack:** Backend Express para servir o frontend em produção.
+* **Frontend in React** with TailwindCSS for styling and Framer Motion for animations.
+* **Internationalization (i18n)**: supports multiple languages (Portuguese and English).
+* **Fullstack Deploy**: Express backend serving the frontend in production.
+* **Accessibility** and intuitive navigation.
 
 ---
 
-## 🚦 Tecnologias Utilizadas
+## 🎨 Project Highlights
+
+* **Modern Interface:** Responsive UI, dark mode, smooth animations with Framer Motion, and hover transitions.
+* **Internationalization:** Supports Portuguese 🇧🇷 and English 🇺🇸.
+* **Dynamic Sections:** About, Experience, Skills, Certifications, Projects (with GitHub integration), and Contact.
+* **Accessibility:** Keyboard navigation and inclusive design.
+* **Fullstack Deploy:** Express backend to serve the frontend in production.
+
+---
+
+## 🚦 Technologies Used
 
 <div align="center">
-  <img src="https://skillicons.dev/icons?i=react,tailwind,nodejs,js,html,css,git,github" />
+  <img src="https://skillicons.dev/icons?i=react,tailwind,nodejs,js,html,css,git,github" />
 </div>
 
 ---
 
-## 📦 Estrutura do Projeto
+## 📦 Project Structure
 
 ```
 backend/
-  server.js
-  package.json
+  server.js
+  package.json
 frontend/
-  src/
-    App.js
-    index.js
-    i18n.js
-    components/
-  public/
-    images/
-    locales/
-    index.html
-    ...
-  tailwind.config.js
-  package.json
+  src/
+    App.js
+    index.js
+    i18n.js
+    components/
+  public/
+    images/
+    locales/
+    index.html
+    ...
+  tailwind.config.js
+  package.json
 ```
 
 ---
 
-## 🚀 Como Rodar Localmente
+## 🚀 How to Run Locally
 
 ```bash
-# Clone o repositório
-git clone https://github.com/DevJpLg/portfolio.git
+# Clone the repository
+git clone [https://github.com/DevJpLg/portfolio.git](https://github.com/DevJpLg/portfolio.git)
 
-# Instale as dependências do frontend
+# Install frontend dependencies
 cd frontend
 npm install
 
-# Para rodar o frontend em modo dev
+# To run the frontend in dev mode
 npm start
 
-# Em outro terminal, rode o backend (opcional para produção)
+# In another terminal, run the backend (optional for production)
 cd ../backend
 npm install
 npm start
@@ -80,7 +80,7 @@ npm start
 
 ---
 
-## 🌐 Acesse Online
+## 🌐 Access Online
 
-- [Portfólio Online](https://www.seusite.com/)
-- [Meu LinkedIn](https://www.linkedin.com/in/joaopedrolopesgoncalves/)
+* [Online Portfolio](https://joaopedro-lg.vercel.app/)
+* [My LinkedIn](https://www.linkedin.com/in/joaopedrolopesgoncalves/)
