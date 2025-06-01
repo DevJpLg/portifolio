@@ -67,7 +67,6 @@ function App() {
   const [headerHeight, setHeaderHeight] = useState(64);
   const [animationDone, setAnimationDone] = useState(false);
 
-  // Helper para animação on-scroll
   const sectionInViewProps = {
     initial: "hidden",
     whileInView: "visible",
@@ -302,7 +301,6 @@ function App() {
       setLoadingProjects(true);
       setErrorProjects(null);
       try {
-        // Fetch 6 most recently updated repos
         const response = await fetch(`https://api.github.com/users/DevJpLg/repos?sort=updated&direction=desc&per_page=6`);
         if (!response.ok) {
           throw new Error(`GitHub API request failed: ${response.status} ${response.statusText}`);
@@ -310,7 +308,6 @@ function App() {
         const data = await response.json();
         setProjects(data);
       } catch (error) {
-        console.error("Failed to fetch projects:", error);
         setErrorProjects(error.message);
       } finally {
         setLoadingProjects(false);
@@ -319,7 +316,6 @@ function App() {
 
     fetchProjects();
   }, []);
-
 
   let greetingDisplay = "";
   let nameDisplay = "";
@@ -400,7 +396,6 @@ function App() {
     return "/Joao_Pedro_CV_en.pdf";
   }, [currentLanguage]);
 
-  // Bloqueia o clique com o botão direito do mouse
   useEffect(() => {
     const handleContextMenu = (e) => {
       e.preventDefault();
@@ -411,7 +406,6 @@ function App() {
     };
   }, []);
 
-  // Estado para as linguagens do GitHub
   const [githubLangs, setGithubLangs] = useState({});
   const [loadingLangs, setLoadingLangs] = useState(true);
 
@@ -476,7 +470,6 @@ function App() {
         font: { weight: 'bold', size: 14 },
         formatter: (value) => value,
         clamp: false,
-        // Adiciona padding extra à direita para garantir espaço para o número
         padding: {
           right: 40
         }
@@ -484,20 +477,18 @@ function App() {
     },
     layout: {
       padding: {
-        right: 40 // espaço extra à direita do gráfico
+        right: 40
       }
     },
     scales: {
       x: {
         display: false,
-        // Garante que o gráfico tenha espaço extra à direita para os números
         max: Math.max(...githubLangsSorted.map(([, count]) => count), 1) + 1
       },
       y: { grid: { color: '#444' }, ticks: { color: '#fff' } }
     }
   };
 
-  // Ref e inView para o gráfico de linguagens do GitHub
   const githubLangsChartRef = useRef(null);
   const isGithubLangsChartInView = useInView(githubLangsChartRef, { once: true, amount: 0.3 });
 

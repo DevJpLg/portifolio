@@ -26,12 +26,36 @@
     "paragraph2": "Atualmente, estou ganhando valiosa experiência prática como Estagiário de Engenharia de Projetos na TechnipFMC, onde contribuo para o setor de administração de gerenciamento de projetos (PMA). Minha função envolve automatizar tarefas complexas, gerenciar grandes volumes de dados e otimizar fluxos de trabalho. Com proficiência avançada em inglês, sou capaz de navegar por documentação técnica e colaborar em ambientes profissionais para impulsionar resultados impactantes.",
     "topSkills": "Ferramentas Mais Usadas",
     "keyTechTags": [
-      { "name": "Python", "bgColor": "bg-green-400", "textColor": "text-green-900" },
-      { "name": "Java", "bgColor": "bg-orange-500", "textColor": "text-white" },
-      { "name": "HTML", "bgColor": "bg-blue-500", "textColor": "text-white" },
-      { "name": "JavaScript", "bgColor": "bg-yellow-300", "textColor": "text-yellow-800" },
-      { "name": "Oracle DB", "bgColor": "bg-red-600", "textColor": "text-white" },
-      { "name": "Office", "bgColor": "bg-orange-600", "textColor": "text-white" }
+      {
+        "name": "Python",
+        "bgColor": "bg-green-400",
+        "textColor": "text-green-900"
+      },
+      {
+        "name": "Java",
+        "bgColor": "bg-orange-500",
+        "textColor": "text-white"
+      },
+      {
+        "name": "HTML",
+        "bgColor": "bg-blue-500",
+        "textColor": "text-white"
+      },
+      {
+        "name": "JavaScript",
+        "bgColor": "bg-yellow-300",
+        "textColor": "text-yellow-800"
+      },
+      {
+        "name": "Oracle DB",
+        "bgColor": "bg-red-600",
+        "textColor": "text-white"
+      },
+      {
+        "name": "Office",
+        "bgColor": "bg-orange-600",
+        "textColor": "text-white"
+      }
     ],
     "location": "Campos dos Goytacazes, Rio de Janeiro, Brasil",
     "locationUrl": "https://maps.app.goo.gl/okaKAYu2S3nabjqd7",
@@ -105,7 +129,13 @@
         "date": "Emitido Jan 2025",
         "credentialId": "UC-467d1001-7a26-4e09-b6fa-ed95a352ce9f",
         "credentialUrl": "https://www.udemy.com/certificate/UC-467d1001-7a26-4e09-b6fa-ed95a352ce9f/",
-        "skills": ["VBA (Visual Basic for Applications)", "Microsoft Power Apps", "Microsoft Power BI", "Python", "Microsoft Office"]
+        "skills": [
+          "VBA (Visual Basic for Applications)",
+          "Microsoft Power Apps",
+          "Microsoft Power BI",
+          "Python",
+          "Microsoft Office"
+        ]
       },
       {
         "key": "javascript7days",
@@ -115,7 +145,11 @@
         "date": "Emitido Ago 2024",
         "credentialId": "UC-0317e664-1337-4973-8d03-2c40e434db58",
         "credentialUrl": "https://www.udemy.com/certificate/UC-0317e664-1337-4973-8d03-2c40e434db58/",
-        "skills": ["JavaScript", "HTML", "CSS"]
+        "skills": [
+          "JavaScript",
+          "HTML",
+          "CSS"
+        ]
       },
       {
         "key": "pythonAdvanced",
@@ -125,7 +159,9 @@
         "date": "Emitido Fev 2024",
         "credentialId": "UC-e7070f0b-126b-4972-a847-34ccf65f9123",
         "credentialUrl": "https://www.udemy.com/certificate/UC-e7070f0b-126b-4972-a847-34ccf65f9123/",
-        "skills": ["Python"]
+        "skills": [
+          "Python"
+        ]
       },
       {
         "key": "gitComplete",
@@ -135,7 +171,10 @@
         "date": "Emitido Nov 2023",
         "credentialId": "UC-c15e43a4-c7e2-407e-b774-4a84db59ef68",
         "credentialUrl": "https://www.udemy.com/certificate/UC-c15e43a4-c7e2-407e-b774-4a84db59ef68/",
-        "skills": ["Git", "GitHub"]
+        "skills": [
+          "Git",
+          "GitHub"
+        ]
       },
       {
         "key": "powerBiComplete",
@@ -145,7 +184,12 @@
         "date": "Emitido Set 2023",
         "credentialId": "UC-3df13012-32c7-4be4-98c8-a6cb8c6c8bca",
         "credentialUrl": "https://www.udemy.com/certificate/UC-3df13012-32c7-4be4-98c8-a6cb8c6c8bca/",
-        "skills": ["Microsoft Power BI", "Microsoft SQL Server", "Microsoft Excel", "Microsoft Office"]
+        "skills": [
+          "Microsoft Power BI",
+          "Microsoft SQL Server",
+          "Microsoft Excel",
+          "Microsoft Office"
+        ]
       },
       {
         "key": "dbAdminBradesco",
@@ -155,7 +199,9 @@
         "date": "Emitido Ago 2023",
         "credentialId": "1E0AAB54-03CB-4F6E-979C-D8F286B05AA4",
         "credentialUrl": "https://drive.google.com/file/d/1TRBdd-lBh3tkvCGS9w20pyn9hbP22iKc/edit",
-        "skills": ["SQL"]
+        "skills": [
+          "SQL"
+        ]
       },
       {
         "key": "dbImplementBradesco",
@@ -165,7 +211,9 @@
         "date": "Emitido Ago 2023",
         "credentialId": "0FF031EA-C674-4349-B3A0-8A2F7C40D629",
         "credentialUrl": "https://drive.google.com/file/d/1RngD6VFqzgTwD5NsHbG3izCbsRkZDpCN/edit",
-        "skills": ["SQL"]
+        "skills": [
+          "SQL"
+        ]
       },
       {
         "key": "dataModelingBradesco",
@@ -175,7 +223,9 @@
         "date": "Emitido Ago 2023",
         "credentialId": "B5D4266A-F0D5-4FDA-B6A2-E3A37E084B2",
         "credentialUrl": "https://drive.google.com/file/d/1Cwk0T0_JwaLUGv0ctNgZo1fTKUVWPaQg/edit",
-        "skills": ["SQL"]
+        "skills": [
+          "SQL"
+        ]
       }
     ]
   },
@@ -198,14 +248,14 @@
     "rights": "Todos os direitos reservados.",
     "ownerName": "João Pedro Lopes Gonçalves"
   },
-"skills": {
-  "title": "Habilidades & Ferramentas",
-  "languagesTitle": "Idiomas",
-  "levelFluent": "Fluente",
-  "levelAdvanced": "Avançado",
-  "levelBasic": "Básico",
-  "namePortuguese": "Português",
-  "nameEnglish": "Inglês",
-  "nameSpanish": "Espanhol"
-}
+  "skills": {
+    "title": "Habilidades & Ferramentas",
+    "languagesTitle": "Idiomas",
+    "levelFluent": "Fluente",
+    "levelAdvanced": "Avançado",
+    "levelBasic": "Básico",
+    "namePortuguese": "Português",
+    "nameEnglish": "Inglês",
+    "nameSpanish": "Espanhol"
+  }
 }
