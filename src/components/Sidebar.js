@@ -11,6 +11,7 @@ const Sidebar = ({ sections }) => {
               <a
                 href={`#${section.id}`}
                 title={section.title}
+                aria-label={`Go to ${section.title} section`} // Added aria-label
                 className="flex items-center justify-center p-2 rounded-full text-accent-teal dark:text-accent-blue hover:bg-accent-magenta/20 dark:hover:bg-accent-teal/20 transition-colors duration-200"
                 onClick={(e) => {
                   const targetElement = document.getElementById(section.id);

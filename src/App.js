@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Suspense, useRef, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   LanguageIcon, BriefcaseIcon, AcademicCapIcon,
   SparklesIcon, CodeBracketIcon, LinkIcon, RocketLaunchIcon,
@@ -497,6 +497,10 @@ function App() {
     }
   };
 
+  // Ref e inView para o gráfico de linguagens do GitHub
+  const githubLangsChartRef = useRef(null);
+  const isGithubLangsChartInView = useInView(githubLangsChartRef, { once: true, amount: 0.3 });
+
   return (
     <div className="min-h-screen flex flex-col relative bg-brand-purple-dark text-dark-text">
       <header ref={headerRef} className="sticky top-0 z-50 shadow-lg bg-brand-purple-dark/80 backdrop-blur-md">
@@ -588,7 +592,7 @@ function App() {
         )}
       </AnimatePresence>
 
-      <main className="flex-grow">
+      <main className="flex-grow" role="main">
         <section
           id="hero"
           className="relative py-20 md:py-32 text-center bg-gradient-to-br from-brand-purple-dark via-brand-purple to-accent-blue/40 flex flex-col items-center justify-center overflow-hidden px-4"
@@ -742,14 +746,14 @@ function App() {
             </motion.h2>
             <div className="max-w-3xl mx-auto space-y-10">
               {experienceJobs.map((job, index) => (
-                <motion.div
+                <div
                   key={job.key || index}
-                  custom={index}
-                  variants={experienceCardVariant}
-                  className="bg-brand-purple-light rounded-xl shadow-2xl overflow-hidden card-hover-effect"
+                  className="bg-brand-purple-light rounded-xl shadow-2xl overflow-hidden" // removido card-hover-effect
                 >
                   <div className="p-6 md:p-8">
-                    <motion.div variants={experienceContentVariant} className="flex flex-col sm:flex-row items-start mb-4">
+                    {/* Mantém motion.div para conteúdo interno se desejar animação interna, 
+                        mas pode remover também se quiser tudo estático */}
+                    <div className="flex flex-col sm:flex-row items-start mb-4">
                       {job.logo && (
                         <a
                           href="https://www.technipfmc.com/"
@@ -770,12 +774,27 @@ function App() {
                         <p className="text-md font-semibold text-accent-blue">{job.company}</p>
                         <div className="text-xs text-gray-400 mt-1 space-x-2">
                           <span><i className="bi bi-calendar-event mr-1"></i>{job.dates}</span>
-                          <span><i className="bi bi-geo-alt-fill mr-1"></i>{job.location}</span>
+                          <span>
+                            <i className="bi bi-geo-alt-fill mr-1"></i>
+                            {job.locationUrl ? (
+                              <a
+                                href={job.locationUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="hover:text-accent-teal"
+                              >
+                                {job.location.split(' · ')[0]}
+                              </a>
+                            ) : (
+                              job.location.split(' · ')[0]
+                            )}
+                            {job.location.includes('·') ? ` · ${job.location.split(' · ')[1]}` : ''}
+                          </span>
                         </div>
                       </div>
-                    </motion.div>
+                    </div>
 
-                    <motion.div variants={experienceContentVariant}>
+                    <div>
                       <h4 className="text-sm font-semibold text-gray-300 mb-2 mt-4"></h4>
                       <ul className="space-y-2 text-sm text-gray-300">
                         {Array.isArray(job.responsibilities) && job.responsibilities.map((resp, i) => (
@@ -785,10 +804,10 @@ function App() {
                           </li>
                         ))}
                       </ul>
-                    </motion.div>
+                    </div>
 
                     {Array.isArray(job.achievements) && job.achievements.length > 0 && (
-                      <motion.div variants={experienceContentVariant} className="mt-4">
+                      <div className="mt-4">
                         <h4 className="text-sm font-semibold text-gray-300 mb-2">{t('experience.achievementsTitle', 'Key Achievements')}:</h4>
                         <ul className="space-y-2 text-sm text-gray-300">
                           {job.achievements.map((achievement, i) => (
@@ -798,10 +817,10 @@ function App() {
                             </li>
                           ))}
                         </ul>
-                      </motion.div>
+                      </div>
                     )}
                   </div>
-                </motion.div>
+                </div>
               ))}
             </div>
           </div>
@@ -1071,16 +1090,21 @@ function App() {
               {...sectionInViewProps}
               variants={sectionVariant}
               className="w-full max-w-4xl mx-auto mt-16 bg-brand-purple-light rounded-xl p-6 shadow-lg"
+              ref={githubLangsChartRef}
             >
               <h3 className="text-xl font-bold mb-4 text-center text-accent-blue">
                 {t('projects.mostUsedLanguages', 'Most used Languages - GitHub')}
               </h3>
-              {loadingLangs ? (
-                <p className="text-center text-gray-300">{t('projects.loading', 'Loading...')}</p>
-              ) : githubLangsSorted.length === 0 ? (
-                <p className="text-center text-gray-400">{t('projects.noProjects', 'No data')}</p>
+              {isGithubLangsChartInView ? (
+                loadingLangs ? (
+                  <p className="text-center text-gray-300">{t('projects.loading', 'Loading...')}</p>
+                ) : githubLangsSorted.length === 0 ? (
+                  <p className="text-center text-gray-400">{t('projects.noProjects', 'No data')}</p>
+                ) : (
+                  <Bar data={githubLangsChartData} options={githubLangsChartOptions} height={180} plugins={[ChartDataLabels]} />
+                )
               ) : (
-                <Bar data={githubLangsChartData} options={githubLangsChartOptions} height={220} plugins={[ChartDataLabels]} />
+                <div style={{ height: 180 }}></div>
               )}
             </motion.div>
           </div>

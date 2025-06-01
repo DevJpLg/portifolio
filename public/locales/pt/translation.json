@@ -47,6 +47,7 @@
         "company": "TechnipFMC · Estágio",
         "dates": "Out 2024 - Atual · ",
         "location": "São João da Barra, Rio de Janeiro, Brasil · Híbrido",
+        "locationUrl": "https://maps.app.goo.gl/vCmHfFs7mXaY6HkDA",
         "logo": "/images/technipfmc.svg",
         "responsibilities": [
           "Automatizando processos complexos e gerenciando grandes volumes de dados usando ferramentas como Python, VBA e Oracle DB.",
