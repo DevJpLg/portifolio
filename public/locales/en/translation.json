@@ -1,5 +1,5 @@
 {
-  "siteTitle": "João Pedro Lopes Gonçalves | Portfolio",
+  "siteTitle": "João Pedro | Portfolio",
   "nav": {
     "home": "Home",
     "about": "About",
@@ -257,6 +257,21 @@
     "levelBasic": "Basic",
     "namePortuguese": "Portuguese",
     "nameEnglish": "English",
-    "nameSpanish": "Spanish"
+    "nameSpanish": "Spanish",
+    "details": {
+      "Python": "Experience in developing automation scripts and data processing solutions. Used in academic projects and for task automation at TechnipFMC.",
+      "Java": "Solid foundation in Object-Oriented Programming. Developed academic projects and have knowledge of core Java concepts.",
+      "HTML5": "Proficient in creating structured and semantic web pages. Used in all my personal web projects.",
+      "JavaScript": "Extensive experience in creating dynamic and interactive web applications. Used with React to build this portfolio.",
+      "CSS3": "Skilled in styling modern and responsive websites, with knowledge of Flexbox, Grid, and animations.",
+      "React": "Developed single-page applications, including this portfolio. Proficient with hooks, components, and state management.",
+      "OracleDB": "Experience with SQL queries and database management from my internship at TechnipFMC.",
+      "VSCode": "My primary code editor for all development, configured with extensions for optimal productivity.",
+      "Git": "Proficient in version control for collaborative and personal projects. Daily use of commands and workflows.",
+      "GitHub": "Used as a platform for hosting repositories, collaboration, and showcasing my projects.",
+      "PowerBI": "Created interactive dashboards and reports for data visualization and analysis at TechnipFMC.",
+      "SharePoint": "Used for document management and team collaboration during my internship.",
+      "Office": "Advanced user of the Microsoft Office suite (Excel, Word, PowerPoint) for various professional and academic tasks."
+    }
   }
 }

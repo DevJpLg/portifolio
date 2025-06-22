@@ -1,17 +1,15 @@
-import React, { useState, useEffect, Suspense, useRef, useMemo, useCallback } from 'react';
+import React, { useState, useEffect, useRef, useMemo, useCallback } from 'react';
 import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
 import {
   LanguageIcon, BriefcaseIcon, AcademicCapIcon,
-  SparklesIcon, CodeBracketIcon, LinkIcon, RocketLaunchIcon,
-  ChatBubbleLeftRightIcon, ArrowDownTrayIcon, EnvelopeIcon,
+  SparklesIcon, CodeBracketIcon, ChatBubbleLeftRightIcon, ArrowDownTrayIcon, EnvelopeIcon,
   CpuChipIcon,
   Bars3Icon,
   XMarkIcon,
   HomeIcon,
   UserCircleIcon
 } from '@heroicons/react/24/outline';
-import Sidebar from './components/Sidebar';
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, BarElement, CategoryScale, LinearScale, Tooltip, Legend } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -38,14 +36,14 @@ const FloatingShape = ({ className }) => (
 );
 
 const sections = [
-  { id: 'home', title: 'Home', icon: HomeIcon },
-  { id: 'about', title: 'About', icon: UserCircleIcon },
-  { id: 'experience', title: 'Experience', icon: BriefcaseIcon },
-  { id: 'skills', title: 'Skills', icon: CpuChipIcon },
-  { id: 'certifications', title: 'Certifications', icon: SparklesIcon },
-  { id: 'projects', title: 'Projects', icon: CodeBracketIcon },
-  { id: 'education', title: 'Education', icon: AcademicCapIcon },
-  { id: 'contact', title: 'Contact', icon: ChatBubbleLeftRightIcon },
+  { id: 'home', title: 'home', icon: HomeIcon },
+  { id: 'about', title: 'about', icon: UserCircleIcon },
+  { id: 'experience', title: 'experience', icon: BriefcaseIcon },
+  { id: 'skills', title: 'skills', icon: CpuChipIcon },
+  { id: 'certifications', title: 'certifications', icon: SparklesIcon },
+  { id: 'projects', title: 'projects', icon: CodeBracketIcon },
+  { id: 'education', title: 'education', icon: AcademicCapIcon },
+  { id: 'contact', title: 'contact', icon: ChatBubbleLeftRightIcon },
 ];
 
 function getMonthsSince(startYear, startMonth) {
@@ -73,10 +71,15 @@ function App() {
   const [currentLanguage, setCurrentLanguage] = useState(i18n.language.split('-')[0]);
   const [typedGreeting, setTypedGreeting] = useState('');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  const [expandedSkill, setExpandedSkill] = useState(null);
   const headerRef = useRef(null);
   const [headerHeight, setHeaderHeight] = useState(64);
   const [animationDone, setAnimationDone] = useState(false);
   const isMobile = useIsMobile();
+
+  const handleSkillClick = (skillName) => {
+    setExpandedSkill(expandedSkill === skillName ? null : skillName);
+  };
 
   const sectionInViewProps = {
     initial: "hidden",
@@ -107,7 +110,7 @@ function App() {
     if (i18n.language !== 'en') {
       i18n.changeLanguage('en');
     }
-  }, []);
+  }, [i18n]);
 
   const greetingPart = t('hero.greeting');
   const namePart = t('hero.name');
@@ -186,34 +189,6 @@ function App() {
         }),
       };
 
-  const experienceCardVariant = isMobile
-    ? { visible: { opacity: 1, y: 0, scale: 1 } }
-    : {
-        hidden: { opacity: 0, y: 50, scale: 0.98 },
-        visible: (i) => ({
-          opacity: 1,
-          y: 0,
-          scale: 1,
-          transition: {
-            delay: i * 0.15,
-            duration: 0.6,
-            ease: "easeOut"
-          }
-        })
-      };
-
-  const experienceContentVariant = {
-    hidden: { opacity: 0, y: isMobile ? 8 : 10 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: isMobile ? 0.35 : 0.4,
-        ease: "easeOut"
-      }
-    }
-  };
-
   const contactIconVariant = isMobile
     ? { visible: { opacity: 1, y: 0, scale: 1 } }
     : {
@@ -231,7 +206,6 @@ function App() {
       };
 
   const profilePhotoUrl = "/images/profile.webp";
-  const technipFmcLogoUrl = "/images/technipfmc.svg";
   const linkedinProfileUrl = "https://www.linkedin.com/in/joaopedrolopesgoncalves/";
   const githubProfileUrl = "https://github.com/DevJpLg";
   const emailAddress = "joaopedro.lg@hotmail.com";
@@ -289,8 +263,7 @@ function App() {
   }, [t]);
 
   const experienceJobsDataRaw = t('experience.jobs', { returnObjects: true });
-  const rawJobs = Array.isArray(experienceJobsDataRaw) ? experienceJobsDataRaw : [];
-
+  const rawJobs = useMemo(() => Array.isArray(experienceJobsDataRaw) ? experienceJobsDataRaw : [], [experienceJobsDataRaw]);
   const processedExperienceJobs = useMemo(() => {
     const technipMonths = getMonthsSince(technipStartYear, technipStartMonth);
 
@@ -307,9 +280,6 @@ function App() {
     });
   }, [rawJobs, getFormattedMonthCountCallback]);
   const experienceJobs = processedExperienceJobs;
-
-  const skillsCategoriesDataRaw = t('skills.categories', { returnObjects: true });
-  const skillsCategories = Array.isArray(skillsCategoriesDataRaw) ? skillsCategoriesDataRaw : [];
 
   const aboutKeyTechTagsDataRaw = t('about.keyTechTags', { returnObjects: true });
   const aboutKeyTechTags = Array.isArray(aboutKeyTechTagsDataRaw) ? aboutKeyTechTagsDataRaw : [];
@@ -355,7 +325,9 @@ function App() {
 
   const handleNavClick = (e, targetId) => {
     e.preventDefault();
-    const element = document.getElementById(targetId);
+    // Corrigir para que 'home' aponte para 'hero'
+    const realTargetId = targetId === 'home' ? 'hero' : targetId;
+    const element = document.getElementById(realTargetId);
     if (element) {
       const headerOffset = headerHeight;
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
@@ -372,7 +344,6 @@ function App() {
   const GITHUB_URL = "https://github.com/DevJpLg";
   const LINKEDIN_URL = "https://www.linkedin.com/in/joaopedrolopesgoncalves/";
   const EMAIL_ADDRESS = "joaopedro.lg@hotmail.com";
-  const PHONE_NUMBER = "+5522999999999";
 
   const languagesData = [
     { name: t('skills.namePortuguese', 'Portuguese'), level: t('skills.levelFluent', 'Fluent'), flagSvg: "/images/flags/portuguese.svg" },
@@ -591,7 +562,7 @@ function App() {
                         className="flex items-center py-2.5 px-3 rounded-lg text-md text-gray-200 hover:bg-brand-purple hover:text-white transition-colors duration-150 ease-in-out"
                       >
                         <item.icon className="h-5 w-5 mr-3" />
-                        <span>{t(item.title)}</span>
+                        <span>{t(`nav.${item.title}`)}</span>
                       </a>
                     </li>
                   ))}
@@ -808,7 +779,7 @@ function App() {
                     </div>
 
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-300 mb-2 mt-4"></h4>
+                      <h4 className="text-sm font-semibold text-gray-300 mb-2 mt-4">{t('experience.responsibilitiesTitle', 'Responsibilities')}</h4>
                       <ul className="space-y-2 text-sm text-gray-300">
                         {Array.isArray(job.responsibilities) && job.responsibilities.map((resp, i) => (
                           <li key={i} className="flex items-start">
@@ -860,42 +831,84 @@ function App() {
             </motion.h2>
 
             <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 md:gap-8 max-w-5xl mx-auto">
-              {skillsList.map((skill, index) => (
-                <motion.div
-                  key={skill.name}
-                  custom={index}
-                  variants={skillItemVariant}
-                  initial={isMobile ? false : "hidden"}
-                  animate={isMobile ? "visible" : undefined}
-                  whileInView={isMobile ? undefined : "visible"}
-                  viewport={isMobile ? undefined : { once: true, amount: 0.05 }}
-                  className="bg-brand-purple-light p-4 md:p-6 rounded-xl shadow-xl text-center card-hover-effect flex flex-col items-center justify-center aspect-square transform transition-all duration-300 hover:scale-105"
-                >
-                  {skill.logoPath && (
-                    <img
-                      src={skill.logoPath}
-                      alt={`${skill.name} logo`}
-                      className="h-12 w-12 md:h-16 md:w-16 mb-3 object-contain"
-                      onError={(e) => {
-                        e.target.style.display = 'none';
-                      }}
-                    />
-                  )}
-                  {skill.IconComponent && (
-                    <skill.IconComponent className="h-12 w-12 md:h-16 md:w-16 mb-3 text-accent-blue" />
-                  )}
-                  {!skill.logoPath && !skill.IconComponent && (
-                    <CpuChipIcon className="h-12 w-12 md:h-16 md:w-16 mb-3 text-gray-500" />
-                  )}
-                  {skill.logoPath && (
-                    <p className="text-sm md:text-base font-semibold text-gray-200 mt-2">{skill.name}</p>
-                  )}
-                  {!skill.logoPath && (
-                    <p className="text-sm md:text-base font-semibold text-gray-200">{skill.name}</p>
-                  )}
-                </motion.div>
-              ))}
+              {skillsList.map((skill, index) => {
+                const isExpanded = expandedSkill === skill.name;
+                const skillKey = skill.name.replace(/ /g, '');
+                return (
+                  <React.Fragment key={skill.name}>
+                    <motion.div
+                      layout
+                      onClick={() => handleSkillClick(skill.name)}
+                      // Remover transition do framer-motion, usar apenas Tailwind para suavidade
+                      className={`relative bg-brand-purple-light p-4 md:p-6 rounded-xl shadow-xl text-center card-hover-effect flex flex-col items-center justify-start cursor-pointer aspect-square hover:scale-105 transition-all duration-200 ease-out ${isExpanded ? 'z-10 border-2 border-accent-blue shadow-2xl scale-105' : 'border-2 border-transparent'}`}
+                    >
+                      <motion.div layout="position" className="flex flex-col items-center w-full">
+                        {skill.logoPath && (
+                          <img
+                            src={skill.logoPath}
+                            alt={`${skill.name} logo`}
+                            className="h-12 w-12 md:h-16 md:w-16 mb-3 object-contain"
+                            onError={(e) => {
+                              e.target.style.display = 'none';
+                            }}
+                          />
+                        )}
+                        {skill.IconComponent && (
+                          <skill.IconComponent className="h-12 w-12 md:h-16 md:w-16 mb-3 text-accent-blue" />
+                        )}
+                        {!skill.logoPath && !skill.IconComponent && (
+                          <CpuChipIcon className="h-12 w-12 md:h-16 md:w-16 mb-3 text-gray-500" />
+                        )}
+                        <div className="flex items-center justify-center w-full">
+                          <p className="text-sm md:text-base font-semibold text-gray-200 mt-2">{skill.name}</p>
+                        </div>
+                      </motion.div>
+                    </motion.div>
+                  </React.Fragment>
+                );
+              })}
             </div>
+            <AnimatePresence>
+              {expandedSkill && (
+                <motion.div
+                  key="popup"
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ duration: 0.3, ease: 'easeInOut' }}
+                  className="fixed inset-0 z-50 flex items-center justify-center" // removido bg-black/60
+                  onClick={() => setExpandedSkill(null)}
+                >
+                  <motion.div
+                    initial={{ y: 40, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    exit={{ y: 40, opacity: 0 }}
+                    transition={{ duration: 0.3, ease: 'easeInOut' }}
+                    className="relative bg-brand-purple-dark rounded-2xl shadow-2xl p-8 max-w-md w-full mx-4 text-gray-200"
+                    onClick={e => e.stopPropagation()}
+                  >
+                    <button
+                      className="absolute top-3 right-3 text-gray-400 hover:text-accent-magenta text-xl"
+                      onClick={() => setExpandedSkill(null)}
+                      aria-label="Close"
+                    >
+                      <svg width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                    <div className="flex flex-col items-center mb-4">
+                      {skillsList.find(s => s.name === expandedSkill)?.logoPath && (
+                        <img
+                          src={skillsList.find(s => s.name === expandedSkill)?.logoPath}
+                          alt={`${expandedSkill} logo`}
+                          className="h-14 w-14 md:h-20 md:w-20 mb-3 object-contain"
+                        />
+                      )}
+                      <p className="text-lg font-bold mb-2">{expandedSkill}</p>
+                    </div>
+                    <p className="text-base text-gray-300">{t(`skills.details.${expandedSkill.replace(/ /g, '')}`)}</p>
+                  </motion.div>
+                </motion.div>
+              )}
+            </AnimatePresence>
 
             <motion.div
               className="mt-16 md:mt-20 max-w-3xl mx-auto"

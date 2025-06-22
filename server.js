@@ -4,8 +4,6 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
 app.use(express.static(path.join(__dirname, '..', 'frontend', 'build')));
 
 app.get('*', (req, res) => {

@@ -1,5 +1,5 @@
 {
-  "siteTitle": "João Pedro Lopes Gonçalves | Portfólio",
+  "siteTitle": "João Pedro | Portfólio",
   "nav": {
     "home": "Início",
     "about": "Sobre",
@@ -257,6 +257,21 @@
     "levelBasic": "Básico",
     "namePortuguese": "Português",
     "nameEnglish": "Inglês",
-    "nameSpanish": "Espanhol"
+    "nameSpanish": "Espanhol",
+    "details": {
+      "Python": "Experiência no desenvolvimento de scripts de automação e soluções de processamento de dados. Utilizado em projetos acadêmicos e para automação de tarefas na TechnipFMC.",
+      "Java": "Sólida base em Programação Orientada a Objetos. Desenvolvi projetos acadêmicos e possuo conhecimento dos principais conceitos de Java.",
+      "HTML5": "Proficiente na criação de páginas web estruturadas e semânticas. Utilizado em todos os meus projetos web pessoais.",
+      "JavaScript": "Vasta experiência na criação de aplicações web dinâmicas e interativas. Utilizado com React para construir este portfólio.",
+      "CSS3": "Habilidoso na estilização de sites modernos e responsivos, com conhecimento de Flexbox, Grid e animações.",
+      "React": "Desenvolvi aplicações de página única (SPAs), incluindo este portfólio. Proficiente com hooks, componentes e gerenciamento de estado.",
+      "OracleDB": "Experiência com consultas SQL e gerenciamento de banco de dados do meu estágio na TechnipFMC.",
+      "VSCode": "Meu editor de código principal para todo o desenvolvimento, configurado com extensões para produtividade otimizada.",
+      "Git": "Proficiente em controle de versão para projetos colaborativos e pessoais. Uso diário de comandos e fluxos de trabalho.",
+      "GitHub": "Utilizado como plataforma para hospedar repositórios, colaboração e exibir meus projetos.",
+      "PowerBI": "Criei painéis e relatórios interativos para visualização e análise de dados na TechnipFMC.",
+      "SharePoint": "Utilizado para gerenciamento de documentos e colaboração em equipe durante meu estágio.",
+      "Office": "Usuário avançado do pacote Microsoft Office (Excel, Word, PowerPoint) para diversas tarefas profissionais e acadêmicas."
+    }
   }
 }

@@ -11,9 +11,14 @@ i18n
     fallbackLng: 'en',
     debug: process.env.NODE_ENV === 'development',
     detection: {
-      order: ['localStorage', 'navigator', 'htmlTag', 'cookie', 'path', 'subdomain'],
+      order: ['navigator', 'localStorage', 'htmlTag', 'cookie', 'path', 'subdomain'],
+      lookupNavigator: true,
       caches: ['localStorage'],
+      // Custom lookup to only allow 'pt' or 'en', fallback to 'en'
+      checkWhitelist: true,
     },
+    whitelist: ['en', 'pt'],
+    supportedLngs: ['en', 'pt'],
     interpolation: {
       escapeValue: false,
     },
